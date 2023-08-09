@@ -16,7 +16,9 @@ def main():
 
 def getPage(URL, num, path):
 
-    raw_payload = 'p_flow_id=236&p_flow_step_id=11&p_instance=4501408421190&p_debug=&p_request=PLUGIN%3D0cAVf3gCTbw16BY_j5HyMj_JFyBcEhjQZYua8n4w0qcSj78-MdeGpvdZCoH7HXKY&p_widget_name=worksheet&p_widget_mod=ACTION&p_widget_action=PAGE&p_widget_action_mod=pgR_min_row%3D' + num + 'max_rows%3D50rows_fetched%3D50&p_widget_num_return=50&x01=624510002243935886&x02=624577032360111240&p_json=%7B%22pageItems%22%3Anull%2C%22salt%22%3A%22303801889182285054550439263054056762483%22%7D'
+    #Payload and cookies need to be updated daily (fix this later)
+    raw_payload = 'p_flow_id=236&p_flow_step_id=11&p_instance=15167498703613&p_debug=&p_request=PLUGIN%3DJbL0fc5FdBuk0_2p_NdqwSRuXKiSPUHVUJcHFBpYY_hByAq1C18Od72ll299-1D8&p_widget_name=worksheet&p_widget_mod=ACTION&p_widget_action=PAGE&p_widget_action_mod=pgR_min_row%3D' + num + 'max_rows%3D50rows_fetched%3D50&p_widget_num_return=50&x01=624510002243935886&x02=624577032360111240&p_json=%7B%22pageItems%22%3Anull%2C%22salt%22%3A%2223212118152036684142242698875152591641%22%7D'
+    #raw_payload = 'p_flow_id=236&p_flow_step_id=11&p_instance=4501408421190&p_debug=&p_request=PLUGIN%3D0cAVf3gCTbw16BY_j5HyMj_JFyBcEhjQZYua8n4w0qcSj78-MdeGpvdZCoH7HXKY&p_widget_name=worksheet&p_widget_mod=ACTION&p_widget_action=PAGE&p_widget_action_mod=pgR_min_row%3D' + num + 'max_rows%3D50rows_fetched%3D50&p_widget_num_return=50&x01=624510002243935886&x02=624577032360111240&p_json=%7B%22pageItems%22%3Anull%2C%22salt%22%3A%22303801889182285054550439263054056762483%22%7D'
     
     payload = raw_payload.replace('\n', '').replace('\r', '')
 
@@ -25,7 +27,8 @@ def getPage(URL, num, path):
         'accept': 'text/html, */*; q=0.01',
         'accept-language': 'en-US,en;q=0.9',
         'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        'cookie': 'ORA_WWV_APP_236=ORA_WWV-L9RXFy_AqzhMssyTVTUYgPpt; nmstat=7292e1ff-8220-27a1-af3f-361517db4cad; _hjSessionUser_764005=eyJpZCI6IjYyNDMzZjQ2LTBmODItNTQxMi1iMDAxLTA5MzM1MmY3ZWJiZCIsImNyZWF0ZWQiOjE2ODk3MzM5MjQ4NDAsImV4aXN0aW5nIjp0cnVlfQ==; _hjSessionUser_862202=eyJpZCI6ImU5MGYwZTg5LTcyNDEtNTRmMS05ZTM1LTdhM2M1YWY2N2MxMCIsImNyZWF0ZWQiOjE2ODk3MzM5MzMzMTEsImV4aXN0aW5nIjp0cnVlfQ==; _ga_QE5T04MEJ8=GS1.1.1691009472.2.0.1691009474.58.0.0; _ga=GA1.1.1466822568.1689733925; _ga_8W6YC9H2KZ=GS1.1.1691095364.9.0.1691095366.0.0.0',
+        'cookie': 'ORA_WWV_APP_236=ORA_WWV-sJ-yzGZzCjB6IHuywwpx_xUF; nmstat=7292e1ff-8220-27a1-af3f-361517db4cad; _hjSessionUser_764005=eyJpZCI6IjYyNDMzZjQ2LTBmODItNTQxMi1iMDAxLTA5MzM1MmY3ZWJiZCIsImNyZWF0ZWQiOjE2ODk3MzM5MjQ4NDAsImV4aXN0aW5nIjp0cnVlfQ==; _hjSessionUser_862202=eyJpZCI6ImU5MGYwZTg5LTcyNDEtNTRmMS05ZTM1LTdhM2M1YWY2N2MxMCIsImNyZWF0ZWQiOjE2ODk3MzM5MzMzMTEsImV4aXN0aW5nIjp0cnVlfQ==; _ga_QE5T04MEJ8=GS1.1.1691009472.2.0.1691009474.58.0.0; _gid=GA1.2.206853464.1691439617; _hjShownFeedbackMessage=true; _ga=GA1.2.1466822568.1689733925; _ga_8W6YC9H2KZ=GS1.1.1691439616.10.1.1691441434.0.0.0',
+        #'cookie': 'ORA_WWV_APP_236=ORA_WWV-L9RXFy_AqzhMssyTVTUYgPpt; nmstat=7292e1ff-8220-27a1-af3f-361517db4cad; _hjSessionUser_764005=eyJpZCI6IjYyNDMzZjQ2LTBmODItNTQxMi1iMDAxLTA5MzM1MmY3ZWJiZCIsImNyZWF0ZWQiOjE2ODk3MzM5MjQ4NDAsImV4aXN0aW5nIjp0cnVlfQ==; _hjSessionUser_862202=eyJpZCI6ImU5MGYwZTg5LTcyNDEtNTRmMS05ZTM1LTdhM2M1YWY2N2MxMCIsImNyZWF0ZWQiOjE2ODk3MzM5MzMzMTEsImV4aXN0aW5nIjp0cnVlfQ==; _ga_QE5T04MEJ8=GS1.1.1691009472.2.0.1691009474.58.0.0; _ga=GA1.1.1466822568.1689733925; _ga_8W6YC9H2KZ=GS1.1.1691095364.9.0.1691095366.0.0.0',
         'dnt': '1',
         'origin': 'https://public-solutions.hillsboroughcounty.org',
         'referer': 'https://public-solutions.hillsboroughcounty.org/enterprise/f?p=236:11:::NO:::',

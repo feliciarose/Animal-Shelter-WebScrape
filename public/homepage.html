@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+<!--Play Yards-->
+<head>
+    <style>
+        body {
+            background-color: lightgray; /* Set the background color to light gray */
+            margin: 0; /* Remove default body margin */
+            overflow: hidden
+        }
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+            opacity: 1;
+            z-index: 99999; /* Set a high z-index to make sure it's on top */
+        }
+        .overlay-image {
+            max-width: 500%; /* Set maximum width for the image */
+            max-height: 500vh; 
+        }
+        .grass {
+            width: 200px;
+            height: 100px;
+            background-color: #7be27e;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            color: #01040a;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        .ad {
+            width: 250px;
+            height: 350px;
+            background-color: #59b1f9;
+            margin: -260px 0 -380px 250px;
+            padding: 10px;
+            text-align: center;
+            color: #040507;
+            font-size: 18px;
+            position: relative;
+        }
+        /* Style for the yellow star */
+        .ad::before {
+            content: "\2605"; /* Unicode for a star character */
+            color: yellow;
+            font-size: 40px;
+            position: absolute;
+            bottom: 10px; /* Adjust the distance from the bottom */
+            left: 50px; /* Adjust the distance from the left */
+        }
+        .ad p {
+            font-size: 35px; /* Adjust font size to make the label larger */
+            writing-mode: horizontal-rl; /* Make the label vertical */
+            transform: scaleX(1); /* Rotate the label */
+            font-weight: bold; /* Make the label bold */
+            display: inline-block; 
+            text-align: center;
+            margin: 100px 0 0 0; /* Remove the default top and bottom margin */     
+        }
+        .inside {
+            width: 230px;
+            height: 400px;
+            background-color: #e09833;
+            margin: 10px 0 10px 550px;
+            padding: 10px;
+            text-align: center;
+            color: #040507;
+            font-size: 18px;
+            position: relative; /* Set the position property to relative */
+        }
+        /* Style for the yellow star */
+        .inside::before {
+            content: "\2605"; /* Unicode for a star character */
+            color: yellow;
+            font-size: 40px;
+            position: absolute;
+            bottom: 10px; /* Adjust the distance from the bottom */
+            left: 50px; /* Adjust the distance from the left */
+        }
+        .inside p {
+            font-size: 35px; /* Adjust font size to make the label larger */
+            writing-mode: horizontal-rl; /* Make the label vertical */
+            transform: scaleX(1); /* Rotate the label */
+            font-weight: bold; /* Make the label bold */
+            display: inline-block; 
+            text-align: center;
+            margin: 150px 0 0 0; /* Remove the default top and bottom margin */     
+        }
+        .alpha {
+            width: 300px;
+            height: 600px;
+            background-color: #7a7dcc;
+            margin: 50px 0 10px 460px;
+            padding: 10px;
+            text-align: center;
+            color: #040507;
+            font-size: 18px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .alpha p {
+            font-size: 35px; /* Adjust font size to make the label larger */
+            writing-mode: horizontal-rl; /* Make the label vertical */
+            transform: scaleX(1); /* Rotate the label */
+            font-weight: bold; /* Make the label bold */
+            display: inline-block; 
+            text-align: center;
+            margin: 200px 0 0 0; /* Remove the default top and bottom margin */     
+        }
+        .delta {
+            width: 300px;
+            height: 600px;
+            background-color: #7a7dcc;
+            margin: 50px 0 10px 460px;
+            padding: 10px;
+            text-align: center;
+            color: #040507;
+            font-size: 18px;
+        }
+        .delta p {
+            font-size: 35px; /* Adjust font size to make the label larger */
+            writing-mode: horizontal-rl; /* Make the label vertical */
+            transform: scaleX(1); /* Rotate the label */
+            font-weight: bold; /* Make the label bold */
+            display: inline-block; 
+            text-align: center;
+            margin: 200px 0 0 0; /* Remove the default top and bottom margin */     
+        }
+        .bravo {
+            width: 300px;
+            height: 600px;
+            background-color: #7a7dcc;
+            margin: -1300px 0 10px 90px;
+            padding: 10px;
+            text-align: center;
+            color: #040507;
+            font-size: 18px;
+        }
+        .bravo p {
+            font-size: 35px; /* Adjust font size to make the label larger */
+            writing-mode: horizontal-rl; /* Make the label vertical */
+            transform: scaleX(1); /* Rotate the label */
+            font-weight: bold; /* Make the label bold */
+            display: inline-block; 
+            text-align: center;
+            margin: 200px 0 0 0; /* Remove the default top and bottom margin */     
+        }
+        .charlie {
+            width: 300px;
+            height: 600px;
+            background-color: #7a7dcc;
+            margin: 50px 0 10px 90px;
+            padding: 10px;
+            text-align: center;
+            color: #040507;
+            font-size: 18px;
+        }
+        .charlie p {
+            font-size: 35px; /* Adjust font size to make the label larger */
+            writing-mode: horizontal-rl; /* Make the label vertical */
+            transform: scaleX(1); /* Rotate the label */
+            font-weight: bold; /* Make the label bold */
+            display: inline-block; 
+            text-align: center;
+            margin: 200px 0 0 0; /* Remove the default top and bottom margin */     
+        }
+        .mag1 {
+            width: 120px;
+            height: 90px;
+            background-color: #7be27e;
+            margin: -1200px 0 0px 810px;
+            padding: 10px;
+            text-align: center;
+            color: #030304;
+            font-size: 20px;
+            float: left;
+            clear: right;
+            font-weight: bold;
+        }
+        .mag2 {
+            width: 120px;
+            height: 90px;
+            background-color: #7be27e;
+            margin: -1080px 0 10px 810px;
+            padding: 10px;
+            text-align: center;
+            color: #060708;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .mag3 {
+            width: 120px;
+            height: 90px;
+            background-color: #7be27e;
+            margin: 10px 0 10px 810px;
+            padding: 10px;
+            text-align: center;
+            color: #020203;
+            font-size: 20px;
+            font-weight: bold
+        }
+        .mag4 {
+            width: 120px;
+            height: 90px;
+            background-color: #7be27e;
+            margin: 10px 0 10px 810px;
+            padding: 10px;
+            text-align: center;
+            color: #040405;
+            font-size: 20px;
+            font-weight: bold
+        }
+        body {
+            margin: 0  /* Remove default body margin */
+        }
+        .bottom-left {
+            position: absolute;
+            margin: 300px 0 80px 80px;
+            bottom: 20;
+            left: 0;
+            width: 300px; /* Adjust the width for a bigger image */
+            height: 100px;
+        }
+        .lost {
+            width: 400px;
+            height: 190px;
+            background-color: #ea7fcc;
+            margin: 760px 0 -450px 440px;
+            padding: 10px;
+            text-align: center;
+            color: #000207;
+            font-weight: bold;
+            font-size: 34px;
+        }
+        .legend {
+            width: 100px;
+            height: 200px;
+            background-color: rgba(5, 5, 5, 0);
+            margin: -1300px 0 80px 570px;
+            padding: 10px;
+            text-align: center;
+            color: #000207;
+            font-size: 25px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grass">
+        <p>AD Play Yard 1</p>
+    </div>
+    <div class="grass">
+        <p>AD Play Yard 2</p>
+    </div>
+    <div class="ad">
+        <p>Kennel: AD</p>
+        <p> (Inside)</p>
+    </div>
+    <div class="inside">
+        <p>Inside</p>
+    </div>
+    <div class="alpha">
+        <p>Kennel: A</p>
+        <br>
+        <p>(Outside)</p>
+    </div>
+    <div class="delta">
+        <p>Kennel: D</p>
+        <br>
+        <p>(Outside)</p>
+    </div>
+    <div class="bravo">
+        <p>Kennel: B</p>
+        <br>
+        <p>(Outside)</p>
+    </div>
+    <div class="charlie">
+        <p>Kennel: C</p>
+        <br>
+        <p>(Outside)</p>
+    </div>
+    <div class="mag1">
+        <p>Meet & Greet</p>
+        <p>Yard 1</p>
+    </div>
+    <div class="mag2">
+        <p>Meet & Greet</p>
+        <p>Yard 2</p>
+    </div>
+    <div class="mag3">
+        <p>Meet & Greet</p>
+        <p>Yard 3</p>
+    </div>
+    <div class="mag4">
+        <p>Meet & Greet</p>
+        <p>Yard 4</p>
+    </div>
+    <div class="lost">
+        <p>Can't find the kennel you are looking for?</p>
+        <p>Click Here!</p>
+    </div>
+    <div class="legend">
+        <p>You are here!</p>
+    </div>
+    <img class="bottom-left" src="https://public-solutions.hillsboroughcounty.org/enterprise/pet_prod/r/236/files/static/v56/hc-wordmark-RGBsm.png" alt="Image description">
+
+    <div class="overlay" id="overlay">
+        <img src="data:image/png;base64,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" alt="Overlay Image" class="overlay-image"
+        width = "700"
+        height = "700">
+    </div>
+
+    <script>
+        // Function to remove the overlay after a specified time
+        function removeOverlay() {
+            var overlay = document.getElementById('overlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+        
+        //Update timeout when done doing this
+        // Set a timeout to call the removeOverlay function after 5 seconds (5000 milliseconds)
+        setTimeout(removeOverlay, 0);
+    </script>
+
+</body>
+
+</html>
